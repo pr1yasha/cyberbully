@@ -9,6 +9,76 @@ body {
     margin: 0;
   }
 
+  body.page-submit,
+  body.page-about {
+    background-color: #000;
+    background-image: none;
+  }
+
+  body.page-submit {
+    --submit-mint: #30dcca;
+    --submit-neon-pink: #eb95dc;
+  }
+
+  body.page-submit .abar a:link,
+  body.page-submit .abar a:visited,
+  body.page-submit .abar a:active {
+    color: var(--submit-neon-pink);
+    text-shadow: none;
+  }
+
+  body.page-submit .abar a:hover {
+    color: var(--submit-neon-pink);
+    text-shadow: none;
+    opacity: 0.85;
+  }
+
+  body.page-submit .submissions-content a[href^="mailto:"]:link,
+  body.page-submit .submissions-content a[href^="mailto:"]:visited,
+  body.page-submit .submissions-content a[href^="mailto:"]:active,
+  body.page-submit .submissions-content a[href^="mailto:"]:hover {
+    color: var(--submit-neon-pink);
+    text-shadow: none;
+  }
+
+  body.page-submit .submit-deadline .blink {
+    color: var(--submit-mint);
+    font-weight: bold;
+    text-shadow: none;
+  }
+
+  body.page-submit .submit-faq p strong {
+    color: var(--submit-mint);
+  }
+
+  body.page-submit .submit-main-row__text > h2:nth-of-type(1) {
+    margin: 0 0 1rem 0;
+  }
+
+  body.page-submit .submit-main-row__text > h2:nth-of-type(2) {
+    margin: 2rem 0 1rem 0;
+  }
+
+  body.page-submit .submit-faq > h2 {
+    margin: 3rem 0 1.5rem 0;
+  }
+
+  body.page-about .zine-image--about {
+    margin: 2rem auto;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  body.page-about .zine-image--about img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  body.page-about .zine-image--about-end {
+    margin-top: 2.5rem;
+  }
+
   .sr-only {
     position: absolute;
     width: 1px;
@@ -26,11 +96,30 @@ body {
     margin: 3rem auto 1rem;
     padding: 0 1rem;
     max-width: 100%;
-    overflow-x: auto;
-    line-height: 1.1;
+    box-sizing: border-box;
     text-align: center;
     text-shadow: none;
     color: #89CE78;
+  }
+
+  .banner.banner--image {
+    overflow: hidden;
+    line-height: 0;
+    margin: 2rem auto 0.1rem;
+    padding-left: 0;
+    padding-right: 0;
+    display: block;
+    box-sizing: border-box;
+    width: 100%;
+    max-width: min(847px, calc(100vw - 2rem));
+    height: auto;
+    object-fit: contain;
+    object-position: top center;
+  }
+
+  pre.banner {
+    overflow-x: auto;
+    line-height: 1.1;
   }
   
   a:visited, a:link, a:active {
@@ -42,16 +131,12 @@ body {
 
   a[href^="mailto:"]:link,
   a[href^="mailto:"]:visited,
-  a[href^="mailto:"]:active,
-  a[href="contact.html"]:link,
-  a[href="contact.html"]:visited,
-  a[href="contact.html"]:active {
+  a[href^="mailto:"]:active {
     color: #E48EB1;
     text-shadow: none;
   }
 
-  a[href^="mailto:"]:hover,
-  a[href="contact.html"]:hover {
+  a[href^="mailto:"]:hover {
     color: #E48EB1;
     opacity: 0.88;
     text-shadow: none;
@@ -64,8 +149,11 @@ body {
   
   .abar {
     text-align: center;
-    padding: 0;
-    margin: 0 0 2.25rem 0;
+    padding: 0.35rem 0;
+    margin: 0 0 0.35rem 0;
+    font-size: 1.4rem;
+    line-height: 1.55;
+    letter-spacing: 0.02em;
   }
 
   .abar a:visited,
@@ -84,10 +172,11 @@ body {
   .marquee {
     width: 100%;
     max-width: 100%;
-    margin: 0.75rem auto 3.25rem;
+    margin: 0.15rem auto 3.25rem;
     overflow: hidden;
     white-space: nowrap;
-    height: 1.7em;
+    min-height: 1.75em;
+    height: auto;
     padding: 0;
     color: #E48EB1;
     text-shadow: none;
@@ -107,8 +196,8 @@ body {
   .marquee__inner span {
     display: inline-block;
     padding-right: 2rem;
-    font-size: 1.15rem;
-    line-height: 1.7em;
+    font-size: 1.4rem;
+    line-height: 1.65em;
     letter-spacing: 0.12em;
     text-transform: lowercase;
     color: inherit;
@@ -249,15 +338,210 @@ body {
     71%, 100% { opacity: 0; }
   }
 
+  .submissions-content {
+    max-width: min(96vw, 76rem);
+    margin: 0 auto;
+    padding: 0 1.25rem 2rem;
+  }
+
+  .submit-deadline {
+    text-align: center;
+    font-size: 1.3rem;
+    margin: 0 0 2.5rem 0;
+  }
+
+  .submit-faq {
+    text-align: center;
+  }
+
+  .submit-main-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    align-items: stretch;
+    margin-bottom: 2.5rem;
+  }
+
+  body.page-submit .submit-main-row__image {
+    flex: 0 1 48%;
+    max-width: 600px;
+    min-width: 240px;
+    display: flex;
+    flex-direction: column;
+    align-self: stretch;
+  }
+
+  body.page-submit .submit-main-row__image img {
+    width: 100%;
+    flex: 0 1 auto;
+    min-height: 0;
+    display: block;
+    object-fit: contain;
+    object-position: center;
+    max-height: min(88vh, 1200px);
+  }
+
+  .submit-main-row__text {
+    flex: 1 1 320px;
+    min-width: 0;
+    text-align: left;
+  }
+
+  .submit-main-row__text h2 {
+    text-align: left;
+    line-height: 1.2;
+  }
+
+  body.page-submit .submit-main-row__text h2,
+  body.page-submit .submit-faq > h2 {
+    color: var(--submit-neon-pink);
+  }
+
+  /* Section headings: scale with viewport on phones, use full content width */
+  .submissions-content h2,
+  body.page-about main section h2 {
+    font-size: clamp(1.55rem, 5.5vw + 0.72rem, 2.5rem);
+    font-weight: 700;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
   @media (max-aspect-ratio: 7/8) {
     body {
       background-image: url(img/lines-alpha-10.png);
       background-size: 6px;
     }
+    body.page-submit,
+    body.page-about {
+      background-image: none;
+    }
     .zine-images {
       flex-direction: column;
     }
+    .submit-main-row {
+      flex-direction: column;
+      align-items: stretch;
+    }
+    .submit-main-row__image {
+      flex: 1 1 auto;
+      max-width: 420px;
+      width: 100%;
+      margin: 0 auto;
+      align-self: center;
+    }
+    .submit-main-row__image img {
+      flex: none;
+      height: auto;
+      max-height: 70vh;
+      object-fit: contain;
+    }
     .fade {
         padding-bottom: 2em;
+    }
+  }
+
+  @media (min-width: 56rem) {
+    html {
+      font-size: 106.25%;
+    }
+
+    body:not(.page-about):not(.page-submit) .zine-images {
+      max-width: min(72rem, calc(100vw - 3.25rem));
+      padding-inline: 1rem;
+      box-sizing: border-box;
+    }
+
+    /* Slightly compact vs default so column height stays near the photo (desktop). */
+    body.page-submit .submit-main-row__text {
+      font-size: 0.91rem;
+      line-height: 1.4;
+    }
+
+    body.page-submit .submit-main-row__text p {
+      margin: 0.42em 0;
+    }
+
+    body.page-submit .submit-main-row__text ul {
+      margin: 0.36em 0;
+      padding-left: 1.2em;
+    }
+
+    body.page-submit .submit-main-row__text li {
+      margin: 0.08em 0;
+      line-height: 1.36;
+    }
+
+    body.page-submit .submit-main-row__text h2 {
+      font-size: clamp(1.08rem, 0.95vw + 0.78rem, 1.55rem);
+      line-height: 1.15;
+    }
+
+    body.page-submit .submit-main-row__text > h2:nth-of-type(1) {
+      margin: 0 0 0.5rem 0;
+    }
+
+    body.page-submit .submit-main-row__text > h2:nth-of-type(2) {
+      margin: 1.1rem 0 0.5rem 0;
+    }
+  }
+
+  @media (max-width: 48rem), (max-aspect-ratio: 7/8) {
+    html {
+      font-size: 83%;
+    }
+
+    .banner.banner--image {
+      margin-bottom: 0;
+      max-width: min(847px, calc(100vw - 3rem));
+    }
+
+    .abar {
+      font-size: 1.14rem;
+      line-height: 1.42;
+      padding: 0.22rem 0;
+      margin: -0.3rem 0 0.25rem 0;
+      letter-spacing: 0.015em;
+    }
+
+    .marquee {
+      min-height: 1.45em;
+      margin: 0.1rem auto 2.75rem;
+    }
+
+    .marquee__inner span {
+      font-size: 0.88rem;
+      line-height: 1.45em;
+      letter-spacing: 0.07em;
+      padding-right: 1.25rem;
+    }
+
+    .submissions-content {
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+    }
+
+    .submissions-content h2,
+    body.page-about main section h2 {
+      font-size: clamp(1.08rem, 3.6vw + 0.42rem, 1.58rem);
+    }
+
+    body.page-about main > section {
+      padding-left: 1.5rem !important;
+      padding-right: 1.5rem !important;
+    }
+
+    body:not(.page-about):not(.page-submit) {
+      box-sizing: border-box;
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+    }
+
+    body:not(.page-about):not(.page-submit) .banner.banner--image {
+      max-width: min(847px, 100%);
+    }
+
+    body.page-submit .submit-deadline {
+      font-size: clamp(0.82rem, 2.4vw + 0.5rem, 1.05rem);
     }
   }
